@@ -1,6 +1,6 @@
-import prismaClient from './generated/client.js';
+import { PrismaClient } from '../../generated/prisma/index.js';
 
-const connectDB = new prismaClient({
+const connectDB = new PrismaClient({
   log: [
     { level: 'query', emit: 'event' },
     { level: 'warn', emit: 'event' },
@@ -24,3 +24,5 @@ connectDB.$on('info', (e) => {
 connectDB.$on('error', (e) => {
   console.log(e);
 });
+
+export { connectDB };

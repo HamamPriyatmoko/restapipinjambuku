@@ -1,8 +1,9 @@
 import express from 'express';
-import memberRoute from './routes/member.route.js';
+import { router } from './routes/api.js';
+import { errorHandler } from './middleware/errorHandler.js';
 
 const app = express();
-
-app.use('/members', memberRoute);
-
+app.use(express.json());
+app.use(router);
+app.use(errorHandler);
 export default app;

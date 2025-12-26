@@ -1,4 +1,4 @@
-import { generateTraceId } from '../utils/genereteTraceId.js';
+import { generateTraceId } from '../utils/generateTraceId.js';
 
 class ResponseError extends Error {
   constructor(status, message, code) {

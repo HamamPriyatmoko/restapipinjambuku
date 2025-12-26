@@ -5,12 +5,12 @@
 // Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
 
 generator client {
-  provider     = "prisma-client-js"
-  output       = "../generated/prisma"
-  binaryTarget = ["native"]
+  provider = "prisma-client-js"
+  output   = "../generated/prisma"
 }
 
 datasource db {
+  url      = env("DATABASE_URL")
   provider = "mysql"
 }
 
@@ -21,12 +21,12 @@ model Members {
   created_at DateTime @default(now())
   borrows    Borrow[]
 
-  @@map("member")
+  @@map("members")
 }
 
 model Books {
   id         Int      @id @default(autoincrement())
-  title      String   @db.VarChar(255)
+  title      String   @unique @db.VarChar(255)
   stock      Int
   created_at DateTime @default(now())
   borrows    Borrow[]
@@ -35,7 +35,7 @@ model Books {
 }
 
 model Borrow {
-  id         BigInt   @id @default(autoincrement())
+  id         Int      @id @default(autoincrement())
   member     Members  @relation(fields: [member_id], references: [id])
   member_id  Int
   book       Books    @relation(fields: [book_id], references: [id])

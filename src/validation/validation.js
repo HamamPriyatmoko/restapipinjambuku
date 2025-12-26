@@ -1,4 +1,4 @@
-import { ResponseError } from '../error/response-error.js';
+import { ResponseError } from '../error/errorResponse.js';
 
 const validate = async (schema, request) => {
   try {
@@ -9,7 +9,7 @@ const validate = async (schema, request) => {
     // console.log('Ini adalah hasil validate', result);
     return result;
   } catch (error) {
-    throw new Error(400, error.errors);
+    throw new ResponseError(400, error.errors, 'ZYD-ERR-004');
   }
 };
 
