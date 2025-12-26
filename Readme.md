@@ -22,7 +22,8 @@ Pastikan sudah terinstall:
 
 ```bash
     npm install
-    npx prisma init --datasource-provider mysql
+
+    npm install nodemon
 ```
 
 2. Tambahkan variable DATABASE_URL ini didalam env:
@@ -35,13 +36,13 @@ DATABASE_URL="mysql://root:root@localhost:3306/ziyadbooks?connection_limit=5&soc
 
 1. Migration
 
-- Untuk Development
+   - Untuk Development
 
 ```bash
    npx prisma migrate dev
 ```
 
-- Untuk Production
+    - Untuk Production
 
 ```bash
     npx prisma migrate deploy
